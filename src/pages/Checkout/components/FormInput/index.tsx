@@ -2,6 +2,7 @@ import { useFormContext } from "react-hook-form";
 
 import { FormInputContainer } from "./styled";
 import { Input } from "../../../../components/Input";
+import { HTMLAttributeAnchorTarget } from "react";
 
 interface FormInputProps {
   setCepFilled: (event: string) => void;
@@ -10,13 +11,17 @@ interface FormInputProps {
 export function FormInput({ setCepFilled }: FormInputProps) {  
   const { register, formState: { errors } } = useFormContext()
 
+  function handleChange(event: HTMLAttributeAnchorTarget) {
+    setCepFilled(event)
+  }
+
   return (          
     <FormInputContainer>
       <Input
         placeholder="CEP"
         className="cep"
         {...register("cep")}
-        onChangeCapture={event => setCepFilled(event.target.value)}
+        onChangeCapture={handleChange}
         error={errors.cep?.message}
       />
 
