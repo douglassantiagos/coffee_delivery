@@ -4,7 +4,7 @@ import { FormInputContainer } from "./styled";
 import { Input } from "../../../../components/Input";
 
 interface FormInputProps {
-  setCepFilled: (event: any) => void;
+  setCepFilled: (event: { target: { value: any } }) => void;
 }
 
 export function FormInput({ setCepFilled }: FormInputProps) {  
