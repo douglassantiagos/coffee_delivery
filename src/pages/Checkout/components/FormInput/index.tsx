@@ -5,15 +5,15 @@ import { Input } from "../../../../components/Input";
 import { HTMLAttributeAnchorTarget } from "react";
 
 interface FormInputProps {
-  setCepFilled: (event: string) => void;
+  setCepFilled: (event: any) => void;
 }
 
 export function FormInput({ setCepFilled }: FormInputProps) {  
   const { register, formState: { errors } } = useFormContext()
 
-  function handleChange(event: HTMLAttributeAnchorTarget) {
-    setCepFilled(event)
-  }
+  // function handleChange(event: HTMLAttributeAnchorTarget) {
+  //   setCepFilled(event)
+  // }
 
   return (          
     <FormInputContainer>
@@ -21,7 +21,7 @@ export function FormInput({ setCepFilled }: FormInputProps) {
         placeholder="CEP"
         className="cep"
         {...register("cep")}
-        onChangeCapture={handleChange}
+        onChangeCapture={event => setCepFilled(event.target.value)}
         error={errors.cep?.message}
       />
 
