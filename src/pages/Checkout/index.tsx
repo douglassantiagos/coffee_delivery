@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
-import { useForm, FormProvider, FieldError } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod';
 
@@ -14,21 +14,6 @@ import { PaymentMethodInput } from "./components/PaymentMethodsInput";
 import { useNavigate } from "react-router-dom";
 import { FormInput } from "./components/FormInput";
 import { InfoTitle } from "../../components/InfoTitle";
-
-export interface FormDataProps {
-  cep: number
-  rua: string
-  numero: number
-  complemento: string
-  bairro: string
-  cidade: string
-  uf: string
-  paymentMethod: {
-    credit: string
-    debit: string
-    money: string
-  }
-}
 
 enum PaymentMethodsData {  
   credit = "credit",
@@ -50,6 +35,8 @@ const deliveryFormValidationSchema = zod.object({
     }
   }),
 })
+
+export type FormDataProps = zod.infer<typeof deliveryFormValidationSchema>
 
 export const paymentMethods = {
   credit: {

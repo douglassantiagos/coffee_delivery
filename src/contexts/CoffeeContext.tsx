@@ -1,5 +1,6 @@
 import produce from "immer";
-import { ChangeEvent, createContext, InputHTMLAttributes, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
+
 import { CoffeeDataType } from "../pages/Home/components/CoffeeCard";
 
 interface AddContextType {

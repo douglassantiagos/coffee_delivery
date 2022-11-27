@@ -1,8 +1,8 @@
+import { useContext } from "react";
 import { useFormContext } from "react-hook-form";
 
 import { FormInputContainer } from "./styled";
 import { Input } from "../../../../components/Input";
-import { useContext } from "react";
 import { CoffeeContext } from "../../../../contexts/CoffeeContext";
 
 interface ErrorsType {
