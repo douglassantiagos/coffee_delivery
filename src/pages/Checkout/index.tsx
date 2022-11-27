@@ -12,7 +12,7 @@ import { FormatMoney } from "../../utils/FormatMoney";
 import { CoffeeCartCard } from "./components/CoffeeCartCard";
 import { PaymentMethodInput } from "./components/PaymentMethodsInput";
 import { useNavigate } from "react-router-dom";
-import { FormInput } from "./components/FormInput";
+import { FieldErrors, FormInput } from "./components/FormInput";
 import { InfoTitle } from "../../components/InfoTitle";
 
 export interface FormDataProps {
@@ -69,7 +69,7 @@ export const paymentMethods = {
 }
 
 export default function Checkout() {
-  const [cepFilled, setCepFilled] = useState<FieldError | any>('')
+  const [cepFilled, setCepFilled] = useState<FieldErrors | string>('')
   const navigate = useNavigate()
   
   const { 

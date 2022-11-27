@@ -1,17 +1,21 @@
-import { FieldError, useFormContext } from "react-hook-form";
+import { DeepMap, FieldError, FieldValues, useFormContext } from "react-hook-form";
 
 import { FormInputContainer } from "./styled";
 import { Input } from "../../../../components/Input";
 import { ChangeEvent } from "react";
 
-interface FormInputProps {
-  setCepFilled: (event: FieldError | any) => void;
+export type FieldErrors<
+  TFieldValues extends FieldValues = FieldValues
+> = DeepMap<TFieldValues, FieldError>;
+
+interface FormInputProps extends FieldErrors {
+  setCepFilled: (event: any) => void;
 }
 
 export function FormInput({ setCepFilled }: FormInputProps) {  
   const { register, formState: { errors } } = useFormContext()
 
-  const handleChange = (event: FieldError | any) => {
+  const handleChange = (event: any) => {
     setCepFilled(event.target.value)
   }
 
