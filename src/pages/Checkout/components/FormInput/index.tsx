@@ -11,9 +11,9 @@ interface FormInputProps {
 export function FormInput({ setCepFilled }: FormInputProps) {  
   const { register, formState: { errors } } = useFormContext()
 
-  const handleChange = (event: any) => {
-    setCepFilled(event.target.value)
-  }
+  // const handleChange = (event: any) => {
+  //   setCepFilled(event.target.value)
+  // }
 
   return (          
     <FormInputContainer>
@@ -21,7 +21,7 @@ export function FormInput({ setCepFilled }: FormInputProps) {
         placeholder="CEP"
         className="cep"
         {...register("cep")}
-        onChangeCapture={handleChange}
+        onChangeCapture={event => setCepFilled(event.target.value)}
         error={errors.cep?.message}
       />
 
