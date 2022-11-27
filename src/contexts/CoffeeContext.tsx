@@ -9,7 +9,7 @@ interface AddContextType {
   removeCartItem: (itemId: number) => void
   updateAmountOrder: (itemId: number, type: "increase" | "decrease") => void
   cleanCart: () => void
-  handleValidCep: (event: ChangeEvent<HTMLTextAreaElement>) => void
+  handleValidCep: (event: ChangeEvent<HTMLInputElement>) => void
   cepFilled: string
 }
 
@@ -86,7 +86,7 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
     setCoffeeSelected(cartItemsWithoutDeleteOne)
   }
 
-  function handleValidCep(event: ChangeEvent<HTMLTextAreaElement>) {
+  function handleValidCep(event: ChangeEvent<HTMLInputElement>) {
     setCepFilled(event.target.value)
   }
 

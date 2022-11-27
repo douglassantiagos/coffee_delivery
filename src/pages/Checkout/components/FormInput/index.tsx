@@ -24,7 +24,7 @@ export function FormInput() {
         placeholder="CEP"
         className="cep"
         {...register("cep")}
-        onChangeCapture={handleValidCep}
+        onChange={handleValidCep}
         error={errors.cep?.message}
       />
 
