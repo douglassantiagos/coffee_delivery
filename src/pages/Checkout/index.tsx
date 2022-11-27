@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from "react-router-dom";
 import * as zod from 'zod';
 
 import { CheckoutContainer, ContentSelected, Delivery, Form, Itens, Payment, PaymentMethods, Total, TotalPriceContainer } from "./styled";
@@ -11,7 +12,6 @@ import { CoffeeContext } from "../../contexts/CoffeeContext";
 import { FormatMoney } from "../../utils/FormatMoney";
 import { CoffeeCartCard } from "./components/CoffeeCartCard";
 import { PaymentMethodInput } from "./components/PaymentMethodsInput";
-import { useNavigate } from "react-router-dom";
 import { FormInput } from "./components/FormInput";
 import { InfoTitle } from "../../components/InfoTitle";
 

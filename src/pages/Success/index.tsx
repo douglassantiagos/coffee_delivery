@@ -1,11 +1,10 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 
 import { Address, ContentAboutOrder, Delivery, InformationDelivery, Payment, SuccessContainer } from "./styled";
 
-import IllustrationDelivery from '../../assets/Illustration.svg'
+import IllustrationDelivery from '../../assets/illustration.svg'
 import { FormDataProps, paymentMethods } from "../Checkout";
-import { useEffect } from "react";
 
 interface LocationType {
   state: FormDataProps
@@ -13,16 +12,6 @@ interface LocationType {
 
 export default function Success() {
   const { state } = useLocation() as unknown as LocationType;
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!state) {
-      navigate("/");
-    }
-  }, []);
-
-  if (!state) return <></>;
 
   const {
     rua,
