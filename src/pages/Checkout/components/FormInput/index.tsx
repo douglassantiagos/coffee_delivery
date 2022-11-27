@@ -1,18 +1,17 @@
-import { DeepMap, FieldError, FieldValues, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 import { FormInputContainer } from "./styled";
 import { Input } from "../../../../components/Input";
-import { ChangeEvent } from "react";
+import { useContext } from "react";
+import { CoffeeContext } from "../../../../contexts/CoffeeContext";
 
-export type FieldErrors<
-  TFieldValues extends FieldValues = FieldValues
-> = DeepMap<TFieldValues, FieldError>;
 
-interface FormInputProps extends FieldErrors {
-  setCepFilled: (event: any) => void;
-}
+// interface FormInputProps {
+//   setCepFilled: (event: any) => void;
+// }
 
-export function FormInput({ setCepFilled }: FormInputProps) {  
+export function FormInput() {  
+  const { setCepFilled } = useContext(CoffeeContext)
   const { register, formState: { errors } } = useFormContext()
 
   const handleChange = (event: any) => {

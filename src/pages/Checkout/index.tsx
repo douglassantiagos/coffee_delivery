@@ -12,7 +12,7 @@ import { FormatMoney } from "../../utils/FormatMoney";
 import { CoffeeCartCard } from "./components/CoffeeCartCard";
 import { PaymentMethodInput } from "./components/PaymentMethodsInput";
 import { useNavigate } from "react-router-dom";
-import { FieldErrors, FormInput } from "./components/FormInput";
+import { FormInput } from "./components/FormInput";
 import { InfoTitle } from "../../components/InfoTitle";
 
 export interface FormDataProps {
@@ -69,13 +69,14 @@ export const paymentMethods = {
 }
 
 export default function Checkout() {
-  const [cepFilled, setCepFilled] = useState<FieldErrors | string>('')
+  // const [cepFilled, setCepFilled] = useState<FieldErrors | string>('')
   const navigate = useNavigate()
   
   const { 
     coffeeSelected, 
     cartItemsTotal,
-    cleanCart
+    cleanCart,
+    cepFilled
   } = useContext(CoffeeContext)
   
   const deliveryForm = useForm<FormDataProps>({
@@ -110,7 +111,7 @@ export default function Checkout() {
             subtitle="Informe o endereço onde deseja receber seu pedido"
           />
           <FormProvider {...deliveryForm}>
-            <FormInput setCepFilled={setCepFilled} />
+            <FormInput />
           </FormProvider>
         </Form>
 

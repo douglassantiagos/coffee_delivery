@@ -9,6 +9,8 @@ interface AddContextType {
   removeCartItem: (itemId: number) => void
   updateAmountOrder: (itemId: number, type: "increase" | "decrease") => void
   cleanCart: () => void
+  setCepFilled: (event: any) => void
+  cepFilled: string
 }
 
 export const CoffeeContext = createContext({} as AddContextType);
@@ -18,6 +20,7 @@ interface CoffeeDataContextProviderProps {
 }
 
 export function CoffeeContextProvider( { children }: CoffeeDataContextProviderProps ) {
+  const [cepFilled, setCepFilled] = useState('') 
   const [coffeeSelected, setCoffeeSelected] = useState<CoffeeDataType[]>(() => {
     const storageCartItem = localStorage.getItem("@coffeeDelivery:cart-item-1.0.0")    
     
@@ -27,6 +30,7 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
 
     return[]
   });
+
 
   const cartItemsTotal = coffeeSelected.reduce((total, cartItem) => {
     return total + cartItem.price * cartItem.amountOrder
@@ -100,6 +104,8 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
       removeCartItem,
       updateAmountOrder,
       cleanCart,
+      setCepFilled,
+      cepFilled
     }}>
       { children }
     </CoffeeContext.Provider>
