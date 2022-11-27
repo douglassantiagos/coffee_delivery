@@ -5,13 +5,13 @@ import { Input } from "../../../../components/Input";
 import { ChangeEvent } from "react";
 
 interface FormInputProps {
-  setCepFilled: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  setCepFilled: (event: any) => void;
 }
 
 export function FormInput({ setCepFilled }: FormInputProps) {  
   const { register, formState: { errors } } = useFormContext()
 
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (event: any) => {
     setCepFilled(event.target.value)
   }
 
