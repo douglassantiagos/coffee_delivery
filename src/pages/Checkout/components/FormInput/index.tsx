@@ -5,9 +5,19 @@ import { Input } from "../../../../components/Input";
 import { useContext } from "react";
 import { CoffeeContext } from "../../../../contexts/CoffeeContext";
 
+interface ErrorsType {
+  errors: {
+    [key: string]: {
+      message: string;
+    };
+  };
+}
+
 export function FormInput() {  
   const { handleValidCep } = useContext(CoffeeContext)
-  const { register, formState: { errors } } = useFormContext()
+  const { register, formState } = useFormContext()
+
+  const { errors } = formState as unknown as ErrorsType;
 
   return (          
     <FormInputContainer>
