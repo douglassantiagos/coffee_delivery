@@ -93,6 +93,7 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
 
   function cleanCart() {
     setCoffeeSelected([])
+    setCepFilled('')
   }
 
   useEffect(() => {
