@@ -69,7 +69,6 @@ export const paymentMethods = {
 }
 
 export default function Checkout() {
-  // const [cepFilled, setCepFilled] = useState<FieldErrors | string>('')
   const navigate = useNavigate()
   
   const { 
