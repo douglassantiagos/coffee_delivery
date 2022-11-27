@@ -5,18 +5,9 @@ import { Input } from "../../../../components/Input";
 import { useContext } from "react";
 import { CoffeeContext } from "../../../../contexts/CoffeeContext";
 
-
-// interface FormInputProps {
-//   setCepFilled: (event: any) => void;
-// }
-
 export function FormInput() {  
   const { handleValidCep } = useContext(CoffeeContext)
   const { register, formState: { errors } } = useFormContext()
-
-  // const handleChange = (event: any) => {
-  //   setCepFilled(event.target.value)
-  // }
 
   return (          
     <FormInputContainer>
@@ -24,7 +15,7 @@ export function FormInput() {
         placeholder="CEP"
         className="cep"
         {...register("cep")}
-        onChange={handleValidCep}
+        // onChangeCapture={handleValidCep}
         error={errors.cep?.message}
       />
 
