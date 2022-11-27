@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, FieldError } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod';
 
@@ -69,7 +69,7 @@ export const paymentMethods = {
 }
 
 export default function Checkout() {
-  const [cepFilled, setCepFilled] = useState('')
+  const [cepFilled, setCepFilled] = useState<FieldError | any>('')
   const navigate = useNavigate()
   
   const { 

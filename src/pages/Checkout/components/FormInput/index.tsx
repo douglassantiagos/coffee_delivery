@@ -1,19 +1,19 @@
-import { useFormContext } from "react-hook-form";
+import { FieldError, useFormContext } from "react-hook-form";
 
 import { FormInputContainer } from "./styled";
 import { Input } from "../../../../components/Input";
 import { ChangeEvent } from "react";
 
 interface FormInputProps {
-  setCepFilled: (event: any) => void;
+  setCepFilled: (event: FieldError | any) => void;
 }
 
 export function FormInput({ setCepFilled }: FormInputProps) {  
   const { register, formState: { errors } } = useFormContext()
 
-  // const handleChange = (event: any) => {
-  //   setCepFilled(event.target.value)
-  // }
+  const handleChange = (event: FieldError | any) => {
+    setCepFilled(event.target.value)
+  }
 
   return (          
     <FormInputContainer>
@@ -21,7 +21,7 @@ export function FormInput({ setCepFilled }: FormInputProps) {
         placeholder="CEP"
         className="cep"
         {...register("cep")}
-        onChangeCapture={event => setCepFilled(event.target.value)}
+        onChangeCapture={handleChange}
         error={errors.cep?.message}
       />
 
