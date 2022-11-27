@@ -1,7 +1,22 @@
+import tradicional  from '../assets/Coffees/tradicional.svg'
+import americano  from '../assets/Coffees/americano.svg'
+import cremoso  from '../assets/Coffees/cremoso.svg'
+import gelado  from '../assets/Coffees/gelado.svg'
+import cafeLeite  from '../assets/Coffees/cafeLeite.svg'
+import latte  from '../assets/Coffees/latte.svg'
+import capuccino  from '../assets/Coffees/capuccino.svg'
+import macchiato  from '../assets/Coffees/macchiato.svg'
+import mocaccino  from '../assets/Coffees/mocaccino.svg'
+import chocoQuente  from '../assets/Coffees/chocoQuente.svg'
+import cubano  from '../assets/Coffees/cubano.svg'
+import havaiano  from '../assets/Coffees/havaiano.svg'
+import arabe  from '../assets/Coffees/arabe.svg'
+import irlandes  from '../assets/Coffees/irlandes.svg'
+
 export const coffeeData = {
   TRADICIONAL: {
     id: 1,
-    image: './coffees/tradicional.svg',
+    image: tradicional,
     tag_pri: 'TRADICIONAL',    
     title: 'Expresso Tradicional',
     subtitle: 'O tradicional café feito com água quente e grãos moídos',
@@ -11,7 +26,7 @@ export const coffeeData = {
 
   AMERICANO: {
     id: 2,
-    image: './coffees/americano.svg',
+    image: americano,
     tag_pri: 'TRADICIONAL',   
     title: 'Expresso Americano',
     subtitle: 'Expresso diluído, menos intenso que o tradicional',
@@ -21,7 +36,7 @@ export const coffeeData = {
 
   CREMOSO: {
     id: 3,
-    image: './coffees/cremoso.svg',
+    image: cremoso,
     tag_pri: 'TRADICIONAL',   
     title: 'Expresso Cremoso',
     subtitle: 'Café expresso tradicional com espuma cremosa',
@@ -31,7 +46,7 @@ export const coffeeData = {
 
   GELADO: {
     id: 4,
-    image: './coffees/gelado.svg',
+    image: gelado,
     tag_pri: 'TRADICIONAL',   
     tag_sec: 'GELADO',   
     title: 'Expresso Gelado',
@@ -42,7 +57,7 @@ export const coffeeData = {
 
   LEITE: {
     id: 5,
-    image: './coffees/cafeLeite.svg',
+    image: cafeLeite,
     tag_pri: 'TRADICIONAL',   
     tag_sec: 'COM LEITE',   
     title: 'Café com Leite',
@@ -53,7 +68,7 @@ export const coffeeData = {
 
   LATTE: {
     id: 6,
-    image: './coffees/latte.svg',
+    image: latte,
     tag_pri: 'TRADICIONAL',   
     tag_sec: 'COM LEITE',   
     title: 'Latte',
@@ -64,7 +79,7 @@ export const coffeeData = {
 
   CAPUCCINO: {
     id: 7,
-    image: './coffees/capuccino.svg',
+    image: capuccino,
     tag_pri: 'TRADICIONAL',   
     tag_sec: 'COM LEITE',   
     title: 'Capuccino',
@@ -75,7 +90,7 @@ export const coffeeData = {
 
   MACCHIATO: {
     id: 8,
-    image: './coffees/macchiato.svg',
+    image: macchiato,
     tag_pri: 'TRADICIONAL',   
     tag_sec: 'COM LEITE',   
     title: 'Macchiato',
@@ -86,7 +101,7 @@ export const coffeeData = {
 
   MOCACCINO: {
     id: 9,
-    image: './coffees/mocaccino.svg',
+    image: mocaccino,
     tag_pri: 'TRADICIONAL',   
     tag_sec: 'COM LEITE',   
     title: 'Mocaccino',
@@ -97,7 +112,7 @@ export const coffeeData = {
 
   CHOCOQUENTE: {
     id: 10,
-    image: './coffees/chocoQuente.svg',
+    image: chocoQuente,
     tag_pri: 'ESPECIAL',   
     tag_sec: 'COM LEITE',   
     title: 'Chocolate Quente',
@@ -108,7 +123,7 @@ export const coffeeData = {
 
   CUBANO: {
     id: 11,
-    image: './coffees/cubano.svg',
+    image: cubano,
     tag_pri: 'ESPECIAL',   
     tag_sec: 'ALCOÓLICO',   
     tag_thi: 'GELADO',   
@@ -120,7 +135,7 @@ export const coffeeData = {
 
   HAVAIANO: {
     id: 12,
-    image: './coffees/havaiano.svg',
+    image: havaiano,
     tag_pri: 'ESPECIAL', 
     title: 'Havaiano',
     subtitle: 'Bebida adocicada preparada com café e leite de coco',
@@ -130,7 +145,7 @@ export const coffeeData = {
 
   ARABE: {
     id: 13,
-    image: './coffees/arabe.svg',
+    image: arabe,
     tag_pri: 'ESPECIAL', 
     title: 'Árabe',
     subtitle: 'Bebida preparada com grãos de café árabe e especiarias',
@@ -140,7 +155,7 @@ export const coffeeData = {
 
   Irlandês: {
     id: 14,
-    image: './Coffees/irlandes.svg',
+    image: irlandes,
     tag_pri: 'ESPECIAL', 
     tag_sec: 'ALCOÓLICO', 
     title: 'Inlandês',
