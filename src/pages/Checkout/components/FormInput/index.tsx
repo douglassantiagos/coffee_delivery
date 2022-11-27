@@ -11,12 +11,12 @@ import { CoffeeContext } from "../../../../contexts/CoffeeContext";
 // }
 
 export function FormInput() {  
-  const { setCepFilled } = useContext(CoffeeContext)
+  const { handleValidCep } = useContext(CoffeeContext)
   const { register, formState: { errors } } = useFormContext()
 
-  const handleChange = (event: any) => {
-    setCepFilled(event.target.value)
-  }
+  // const handleChange = (event: any) => {
+  //   setCepFilled(event.target.value)
+  // }
 
   return (          
     <FormInputContainer>
@@ -24,7 +24,7 @@ export function FormInput() {
         placeholder="CEP"
         className="cep"
         {...register("cep")}
-        onChangeCapture={handleChange}
+        onChangeCapture={handleValidCep}
         error={errors.cep?.message}
       />
 

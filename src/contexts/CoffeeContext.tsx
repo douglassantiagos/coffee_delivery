@@ -1,5 +1,5 @@
 import produce from "immer";
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { ChangeEvent, createContext, InputHTMLAttributes, ReactNode, useEffect, useState } from "react";
 import { CoffeeDataType } from "../pages/Home/components/CoffeeCard";
 
 interface AddContextType {
@@ -9,7 +9,7 @@ interface AddContextType {
   removeCartItem: (itemId: number) => void
   updateAmountOrder: (itemId: number, type: "increase" | "decrease") => void
   cleanCart: () => void
-  setCepFilled: (event: any) => void
+  handleValidCep: (event: ChangeEvent<HTMLTextAreaElement>) => void
   cepFilled: string
 }
 
@@ -86,6 +86,10 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
     setCoffeeSelected(cartItemsWithoutDeleteOne)
   }
 
+  function handleValidCep(event: ChangeEvent<HTMLTextAreaElement>) {
+    setCepFilled(event.target.value)
+  }
+
   function cleanCart() {
     setCoffeeSelected([])
   }
@@ -104,7 +108,7 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
       removeCartItem,
       updateAmountOrder,
       cleanCart,
-      setCepFilled,
+      handleValidCep,
       cepFilled
     }}>
       { children }
