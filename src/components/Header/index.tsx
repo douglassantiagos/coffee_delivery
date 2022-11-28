@@ -1,4 +1,4 @@
-import { ShoppingCart, MapPin } from 'phosphor-react'
+import { ShoppingCart, MapPin, Warning } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 
 import { HeaderContainer, HeaderContainerShadow, Nav } from './styled'
@@ -8,11 +8,19 @@ import { useContext, useEffect, useState } from 'react'
 import { CoffeeContext } from '../../contexts/CoffeeContext'
 
 export function Header() {
-  const [ pageYPosition, setPageYPosition ] = useState(0);
+  const [ pageYPosition, setPageYPosition ] = useState(0);  
 
-  const { coffeeSelected } = useContext(CoffeeContext)
+  const { 
+    coffeeSelected,
+    getCoordintes,
+    locationState,
+  } = useContext(CoffeeContext)
 
   const coffeeAmountOrder = coffeeSelected.length;
+  
+  function HandleCoordintes() {
+    getCoordintes()
+  }
 
   useEffect(() => {
     function getPageYAfterScroll() {
@@ -31,9 +39,9 @@ export function Header() {
             </NavLink>
     
             <Nav>
-              <button>
-                <MapPin weight='fill' size={20} />
-                <span>Porto Alegre, RS</span>
+              <button onClick={HandleCoordintes}>
+                {locationState === 'Localização Bloqueada' ? <Warning weight='fill' size={20} /> : <MapPin weight='fill' size={20} />}
+                <span>{locationState}</span>
               </button>
     
               <NavLink to="/checkout">
@@ -55,9 +63,9 @@ export function Header() {
             </NavLink>
     
             <Nav>
-              <button>
-                <MapPin weight='fill' size={20} />
-                <span>Porto Alegre, RS</span>
+              <button onClick={HandleCoordintes}>
+                {locationState === 'Localização Bloqueada' ? <Warning weight='fill' size={20} /> : <MapPin weight='fill' size={20} />}
+                <span>{locationState}</span>
               </button>
     
               <NavLink to="/checkout">

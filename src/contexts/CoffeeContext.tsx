@@ -6,12 +6,14 @@ import { CoffeeDataType } from "../pages/Home/components/CoffeeCard";
 interface AddContextType {
   coffeeSelected: CoffeeDataType[]
   cartItemsTotal: number
+  cepFilled: string
+  locationState: string
   addNewItemToCart: (data: CoffeeDataType, amountOrder: number) => void
   removeCartItem: (itemId: number) => void
   updateAmountOrder: (itemId: number, type: "increase" | "decrease") => void
   cleanCart: () => void
   handleValidCep: (event: any) => void
-  cepFilled: string
+  getCoordintes: () => void
 }
 
 export const CoffeeContext = createContext({} as AddContextType);
@@ -21,6 +23,7 @@ interface CoffeeDataContextProviderProps {
 }
 
 export function CoffeeContextProvider( { children }: CoffeeDataContextProviderProps ) {
+  const [ locationState, setLocationState ] = useState('');
   const [cepFilled, setCepFilled] = useState('') 
   const [coffeeSelected, setCoffeeSelected] = useState<CoffeeDataType[]>(() => {
     const storageCartItem = localStorage.getItem("@coffeeDelivery:cart-item-1.0.0")    
@@ -96,11 +99,61 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
     setCepFilled('')
   }
 
+  function getCoordintes() {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    function success(position: any) {
+      var lat = position.coords.latitude.toString();
+      var lng = position.coords.longitude.toString();
+      var coordinates = [lat, lng];
+      console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+      getState(coordinates);
+      return;
+    }
+
+    function error(err: any) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+      setLocationState("Localização Bloqueada")    
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }
+
+  function getState(coordinates: any) {
+    var xhr = new XMLHttpRequest();
+    var lat = coordinates[0];
+    var lng = coordinates[1];
+
+    // Paste your LocationIQ token below.
+    xhr.open('GET', "https://us1.locationiq.com/v1/reverse.php?key=pk.294f09055a90de12055bd6c1f274276e&lat=" +
+    lat + "&lon=" + lng + "&format=json", true);
+    xhr.send();
+    xhr.onreadystatechange = processRequest;
+    xhr.addEventListener("readystatechange", processRequest, false);
+
+    function processRequest() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        var state = response.address.state;
+        console.log(response);
+        setLocationState(state)
+        return;
+      }
+    }
+  }
+
   useEffect(() => {
     const storageCartItem = JSON.stringify(coffeeSelected)
-
     localStorage.setItem("@coffeeDelivery:cart-item-1.0.0", storageCartItem)
   }, [coffeeSelected])
+
+  useEffect(() => { 
+    getCoordintes()   
+  }, [])
 
   return (
     <CoffeeContext.Provider value={{
@@ -111,7 +164,9 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
       updateAmountOrder,
       cleanCart,
       handleValidCep,
-      cepFilled
+      cepFilled,
+      locationState,
+      getCoordintes,
     }}>
       { children }
     </CoffeeContext.Provider>
