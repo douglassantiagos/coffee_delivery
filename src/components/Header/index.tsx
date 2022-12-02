@@ -8,12 +8,12 @@ import { useContext, useEffect, useState } from 'react'
 import { CoffeeContext } from '../../contexts/CoffeeContext'
 
 export function Header() {
-  const [ pageYPosition, setPageYPosition ] = useState(0);  
+  const [ pageYPosition, setPageYPosition ] = useState(0);
 
   const { 
     coffeeSelected,
     getCoordintes,
-    locationState,
+    locationCity,
   } = useContext(CoffeeContext)
 
   const coffeeAmountOrder = coffeeSelected.length;
@@ -40,8 +40,8 @@ export function Header() {
     
             <Nav>
               <button onClick={HandleCoordintes}>
-                {locationState === 'Localização Bloqueada' ? <Warning weight='fill' size={20} /> : <MapPin weight='fill' size={20} />}
-                <span>{locationState}</span>
+                {locationCity === 'Localização Bloqueada' ? <Warning weight='fill' size={20} /> : <MapPin weight='fill' size={20} />}
+                <span>{locationCity}</span>
               </button>
     
               <NavLink to="/checkout">
@@ -64,8 +64,8 @@ export function Header() {
     
             <Nav>
               <button onClick={HandleCoordintes}>
-                {locationState === 'Localização Bloqueada' ? <Warning weight='fill' size={20} /> : <MapPin weight='fill' size={20} />}
-                <span>{locationState}</span>
+                {locationCity === 'Localização Bloqueada' ? <Warning weight='fill' size={20} /> : <MapPin weight='fill' size={20} />}
+                <span>{locationCity}</span>
               </button>
     
               <NavLink to="/checkout">
