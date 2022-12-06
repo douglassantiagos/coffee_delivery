@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -69,7 +69,7 @@ export default function Checkout() {
     resolver: zodResolver(deliveryFormValidationSchema)
   })
 
-  const { register, getValues, handleSubmit, formState: { errors } } = deliveryForm
+  const { register, watch, handleSubmit, formState: { errors } } = deliveryForm
   
   function handleConfirmOrder(formData: FormDataProps) {
     navigate("/success", {
@@ -78,6 +78,10 @@ export default function Checkout() {
     console.log("FormData: ", formData)
     cleanCart()
   }
+
+  const cep = watch('cep')
+
+  console.log("AGORA: ", cep)
   
   const enableCepFilledValid = cepFilled.length > 7 && cepFilled.length < 9;
   const disabledButtonConfirmOrder = coffeeSelected.length === 0;

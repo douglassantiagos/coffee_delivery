@@ -13,12 +13,11 @@ interface ErrorsType {
   };
 }
 
-export function FormInput() {  
+export function FormInput() {
   const { handleValidCep } = useContext(CoffeeContext)
-
   const { register, formState } = useFormContext()
 
-  const { errors } = formState as unknown as ErrorsType; 
+  const { errors } = formState as unknown as ErrorsType;   
 
   return (          
     <FormInputContainer>
@@ -31,10 +30,11 @@ export function FormInput() {
         />
 
       <Input
+        type="text"
         placeholder="Rua"
         className="rua"
         {...register("rua")}
-        error={errors.rua?.message}        
+        error={errors.rua?.message}   
       />
 
       <Input
@@ -52,6 +52,7 @@ export function FormInput() {
       />
 
       <Input
+        type="text"
         placeholder="Bairro"
         {...register("bairro")}
         error={errors.bairro?.message}
@@ -61,6 +62,7 @@ export function FormInput() {
         placeholder="Cidade"
         {...register("cidade")}
         error={errors.cidade?.message}
+
       />
 
       <Input 

@@ -24,8 +24,8 @@ interface CoffeeDataContextProviderProps {
 
 export function CoffeeContextProvider( { children }: CoffeeDataContextProviderProps ) {
   const [ locationCity, setLocationCity ] = useState('');
-  const [cepFilled, setCepFilled] = useState('') 
-  const [coffeeSelected, setCoffeeSelected] = useState<CoffeeDataType[]>(() => {
+  const [ cepFilled, setCepFilled ] = useState('') 
+  const [ coffeeSelected, setCoffeeSelected ] = useState<CoffeeDataType[]>(() => {
     const storageCartItem = localStorage.getItem("@coffeeDelivery:cart-item-1.0.0")    
     
     if (storageCartItem) {

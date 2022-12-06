@@ -29,7 +29,7 @@ export const InputContent = styled.div<InputContentProps>`
   hasError &&
   css`
     border-color: ${theme.base.warning};
-  `}
+  `}  
 `
 
 export const InputStyle = styled.input`
