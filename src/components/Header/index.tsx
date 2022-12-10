@@ -13,7 +13,7 @@ export function Header() {
   const { 
     coffeeSelected,
     getCoordintes,
-    locationCity,
+    locationSuburb,
   } = useContext(CoffeeContext)
 
   const coffeeAmountOrder = coffeeSelected.length;
@@ -40,8 +40,8 @@ export function Header() {
     
             <Nav>
               <button onClick={HandleCoordintes}>
-                {locationCity === 'Localização Bloqueada' ? <Warning weight='fill' size={20} /> : <MapPin weight='fill' size={20} />}
-                <span>{locationCity}</span>
+                {locationSuburb === 'Localização Bloqueada' ? <Warning weight='fill' size={20} /> : <MapPin weight='fill' size={20} />}
+                <span>{locationSuburb}</span>
               </button>
     
               <NavLink to="/checkout">
@@ -64,8 +64,8 @@ export function Header() {
     
             <Nav>
               <button onClick={HandleCoordintes}>
-                {locationCity === 'Localização Bloqueada' ? <Warning weight='fill' size={20} /> : <MapPin weight='fill' size={20} />}
-                <span>{locationCity}</span>
+                {locationSuburb === 'Localização Bloqueada' ? <Warning weight='fill' size={20} /> : <MapPin weight='fill' size={20} />}
+                <span>{locationSuburb}</span>
               </button>
     
               <NavLink to="/checkout">

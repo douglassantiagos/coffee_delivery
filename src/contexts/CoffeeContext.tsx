@@ -7,7 +7,7 @@ interface AddContextType {
   coffeeSelected: CoffeeDataType[]
   cartItemsTotal: number
   cepFilled: string
-  locationCity: string
+  locationSuburb: string
   addNewItemToCart: (data: CoffeeDataType, amountOrder: number) => void
   removeCartItem: (itemId: number) => void
   updateAmountOrder: (itemId: number, type: "increase" | "decrease") => void
@@ -23,7 +23,7 @@ interface CoffeeDataContextProviderProps {
 }
 
 export function CoffeeContextProvider( { children }: CoffeeDataContextProviderProps ) {
-  const [ locationCity, setLocationCity ] = useState('');
+  const [ locationSuburb, setLocationSuburb ] = useState('');
   const [ cepFilled, setCepFilled ] = useState('') 
   const [ coffeeSelected, setCoffeeSelected ] = useState<CoffeeDataType[]>(() => {
     const storageCartItem = localStorage.getItem("@coffeeDelivery:cart-item-1.0.0")    
@@ -109,19 +109,19 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
       var lat = position.coords.latitude.toString();
       var lng = position.coords.longitude.toString();
       var coordinates = [lat, lng];
-      getCity(coordinates);
+      getSuburb(coordinates);
       return;
     }
 
     function error(err: any) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
-      setLocationCity("Localização Bloqueada")    
+      setLocationSuburb("Localização Bloqueada")    
     }
 
     navigator.geolocation.getCurrentPosition(success, error, options);
   }
 
-  function getCity(coordinates: any) {
+  function getSuburb(coordinates: any) {
     var xhr = new XMLHttpRequest();
     var lat = coordinates[0];
     var lng = coordinates[1];
@@ -136,9 +136,9 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
     function processRequest() {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var response = JSON.parse(xhr.responseText);
-        var city = response.address.city;
-        // console.log("Location: ", response)
-        setLocationCity(city)
+        var suburb = response.address.suburb;
+        console.log("Location: ", response)
+        setLocationSuburb(suburb)
         return;
       }
     }
@@ -163,7 +163,7 @@ export function CoffeeContextProvider( { children }: CoffeeDataContextProviderPr
       cleanCart,
       handleValidCep,
       cepFilled,
-      locationCity,
+      locationSuburb,
       getCoordintes,
     }}>
       { children }
